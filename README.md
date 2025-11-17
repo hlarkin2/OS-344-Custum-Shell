@@ -9,3 +9,22 @@ https://dev.to/angelotheman/build-your-own-shell-part-1-1192
 ### print the output back in the custom shell. Python also 
 ### has a decently nice libray, cmd, that supports custom shells
 https://danishpraka.sh/posts/shell-in-python/
+
+
+# Top 10 Commands:
+Mkdir
+rmdir
+rm
+cp
+touch
+cat
+ls
+grep
+chmod
+cd
+
+# Custom Commands:
+Colby:
+Hannah:
+Jayden:
+
