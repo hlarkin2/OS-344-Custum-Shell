@@ -4,6 +4,7 @@
 #include "builtin.h"
 #include "utils.h"
 
+
 // -----------------------------
 // Built-in command definitions
 // -----------------------------
@@ -24,6 +25,7 @@ int shell_cd(char **args) {
 int shell_exit(char **args) {
     return 0;   // returning 0 tells main loop to exit
 }
+
 
 int shell_help(char **args) {
     printf("\nWelcome to the Linux terminal!\n");

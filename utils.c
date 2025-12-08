@@ -23,7 +23,7 @@ int is_valid_command(char *cmd) {
     if (!cmd) return 0;
 
     // Built-ins
-    const char *builtins[] = { "cd", "exit", "help", "next", "history", "wlfc" };
+    const char *builtins[] = { "cd", "exit", "help", "next", "history", "wlfc", "source" };
     int num_builtins = sizeof(builtins) / sizeof(char*);
 
     for (int i = 0; i < num_builtins; i++)
