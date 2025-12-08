@@ -1,2 +1,5 @@
-hello world
-pattern
+"this is a test"
+"another line"
+"hello world"
+"even more"
+"okie dokie"
