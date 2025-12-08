@@ -21,11 +21,13 @@ typedef struct {
 } CommandHistory;
 
 
-
 #define HISTORY_SIZE 10
 
 
 extern CommandHistory history[HISTORY_SIZE];
 extern int history_count;
+
+// Script mode flag (disables interactive prompts when running scripts)
+extern int script_mode;
 
 #endif

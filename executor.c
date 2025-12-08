@@ -1,3 +1,5 @@
+#define _POSIX_C_SOURCE 200809L
+
 // executor.c
 #include <stdio.h>
 #include <stdlib.h>

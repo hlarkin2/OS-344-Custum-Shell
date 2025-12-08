@@ -1,3 +1,5 @@
+#define _POSIX_C_SOURCE 200809L
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -8,12 +10,13 @@
 #include "utils.h"
 
 
-
 char last_real_command[64] = "";
-
 
 CommandHistory history[HISTORY_SIZE];
 int history_count = 0;
+
+// Script mode flag (0 = interactive, 1 = running script)
+int script_mode = 0;
 
 
 // ---------------------------------------------------------------------------
@@ -106,8 +109,6 @@ void add_to_history(const char *cmd) {
 
     history_count++;
 }
-
-
 
 
 // ---------------------------------------------------------------------------
@@ -270,14 +271,20 @@ int command_in_path(const char *cmd) {
 
 // ---------------------------------------------------------------------------
 // Ask user "Execute this command? (y/n)"
+// In script mode, automatically return 1 (yes)
 // ---------------------------------------------------------------------------
 int confirm_execution() {
+    // Auto-confirm in script mode
+    if (script_mode) {
+        return 1;
+    }
+
     printf("Execute this command? (y/n): ");
     char ans[8];
     fgets(ans, sizeof(ans), stdin);
 
     if (ans[0] == 'y' || ans[0] == 'Y') {
-        printf("\n"); // <-- ADDED NEWLINE YOU ASKED FOR
+        printf("\n");
         return 1;
     }
     return 0;

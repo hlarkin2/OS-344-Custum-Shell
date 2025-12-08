@@ -1,3 +1,5 @@
+#define _POSIX_C_SOURCE 200809L
+
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
@@ -151,14 +153,14 @@ int shell_wlfc(char **args) {
     };
     
     size_t num_lines = sizeof(art) / sizeof(char*);
-    const int delay_us = 100; // 675ms per character
+    const int delay_us = 100; // 100 microseconds per character
 
     for (size_t i = 0; i < num_lines; i++) {
         const char *line = art[i];
         for (size_t j = 0; line[j] != '\0'; j++) {
             putchar(line[j]);
             fflush(stdout);
-            usleep(delay_us); // delay 675ms per character
+            usleep(delay_us);
         }
         putchar('\n');
     }
@@ -178,63 +180,63 @@ int shell_next(char **args) {
     printf("\nSuggestions after '%s':\n", last);
 
     if (strcmp(last, "ls") == 0) {
-        printf("  • pwd     : show your current directory\n");
-        printf("  • cd      : move to another directory\n");
-        printf("  • cat     : read files in the directory\n");
+        printf("  * pwd     : show your current directory\n");
+        printf("  * cd      : move to another directory\n");
+        printf("  * cat     : read files in the directory\n");
     } 
     else if (strcmp(last, "pwd") == 0) {
-        printf("  • ls      : list files in this directory\n");
-        printf("  • cd      : change directories\n");
+        printf("  * ls      : list files in this directory\n");
+        printf("  * cd      : change directories\n");
     }
     else if (strcmp(last, "cd") == 0) {
-        printf("  • ls      : view the contents of the new directory\n");
-        printf("  • pwd     : verify your new working directory\n");
+        printf("  * ls      : view the contents of the new directory\n");
+        printf("  * pwd     : verify your new working directory\n");
     }
     else if (strcmp(last, "cat") == 0) {
-        printf("  • grep    : search inside the file you viewed\n");
-        printf("  • ls      : list related files in the directory\n");
+        printf("  * grep    : search inside the file you viewed\n");
+        printf("  * ls      : list related files in the directory\n");
     }
     else if (strcmp(last, "grep") == 0) {
-        printf("  • cat     : read the file you searched\n");
-        printf("  • ls      : inspect additional files\n");
+        printf("  * cat     : read the file you searched\n");
+        printf("  * ls      : inspect additional files\n");
     }
     else if (strcmp(last, "mkdir") == 0) {
-        printf("  • ls      : check that the new directory was created\n");
-        printf("  • cd      : move into the directory\n");
-        printf("  • chmod   : adjust permissions for the new directory\n");
-        printf("  • chown   : change ownership of the new directory\n");
+        printf("  * ls      : check that the new directory was created\n");
+        printf("  * cd      : move into the directory\n");
+        printf("  * chmod   : adjust permissions for the new directory\n");
+        printf("  * chown   : change ownership of the new directory\n");
     }
     else if (strcmp(last, "touch") == 0) {
-        printf("  • ls      : check that the file was created\n");
-        printf("  • chmod   : set permissions for the new file\n");
-        printf("  • chown   : change ownership of the new file\n");
+        printf("  * ls      : check that the file was created\n");
+        printf("  * chmod   : set permissions for the new file\n");
+        printf("  * chown   : change ownership of the new file\n");
     }
     else if (strcmp(last, "rm") == 0) {
-        printf("  • ls      : verify that the file is gone\n");
-        printf("  • mkdir   : create new directories if needed\n");
+        printf("  * ls      : verify that the file is gone\n");
+        printf("  * mkdir   : create new directories if needed\n");
     }
     else if (strcmp(last, "mv") == 0 || strcmp(last, "cp") == 0) {
-        printf("  • ls      : verify the move/copy\n");
-        printf("  • chmod   : adjust permissions if needed\n");
-        printf("  • chown   : adjust ownership if needed\n");
+        printf("  * ls      : verify the move/copy\n");
+        printf("  * chmod   : adjust permissions if needed\n");
+        printf("  * chown   : adjust ownership if needed\n");
     }
     else if (strcmp(last, "chmod") == 0) {
-        printf("  • ls      : check updated permissions\n");
-        printf("  • chown   : adjust ownership if necessary\n");
+        printf("  * ls      : check updated permissions\n");
+        printf("  * chown   : adjust ownership if necessary\n");
     }
     else if (strcmp(last, "chown") == 0) {
-        printf("  • ls      : verify ownership changes\n");
-        printf("  • chmod   : adjust permissions if necessary\n");
+        printf("  * ls      : verify ownership changes\n");
+        printf("  * chmod   : adjust permissions if necessary\n");
     }
     else if (strcmp(last, "ps") == 0 || strcmp(last, "top") == 0) {
-        printf("  • kill    : terminate a process\n");
-        printf("  • nice    : change process priority\n");
+        printf("  * kill    : terminate a process\n");
+        printf("  * nice    : change process priority\n");
     }
     else {
         // Generic fallback suggestions
-        printf("  • ls      : list files\n");
-        printf("  • pwd     : show your current directory\n");
-        printf("  • cd      : navigate the filesystem\n");
+        printf("  * ls      : list files\n");
+        printf("  * pwd     : show your current directory\n");
+        printf("  * cd      : navigate the filesystem\n");
     }
 
     printf("\n");
